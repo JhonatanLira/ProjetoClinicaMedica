@@ -1,7 +1,10 @@
 package com.clinica.domain.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -11,9 +14,12 @@ import java.time.LocalDate;
 @Data
 public class Paciente {
 
+    @Id
     private Long id;
     private String nome;
+    @Size(min=11,max = 14)
     private String cpf;
+    @Size(min = 9,max = 14)
     private String celular;
     private LocalDate dataCadastro;
 
