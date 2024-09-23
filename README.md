@@ -1,2 +1,2 @@
-# ProjetoClinicaMedica
+# Projeto Clinica Medica
 Projeto Clínica Médica
