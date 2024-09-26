@@ -5,17 +5,14 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
-@Table(name = "tb_medico")
+@Table(name = "tb_especialidade")
 @Data
-public class Medico {
+public class Especialidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idEspecialidade;
-    @Size(min = 3,max = 80)
     private String nome;
-    @Size(min = 3,max = 11)
-    private String crm;
-
+    @Size(max = 255)
+    private String descricao;
 }

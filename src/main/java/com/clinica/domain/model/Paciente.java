@@ -1,9 +1,6 @@
 package com.clinica.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -15,7 +12,8 @@ import java.time.LocalDate;
 public class Paciente {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idPaciente;
     private String nome;
     @Size(min=11,max = 14)
     private String cpf;
