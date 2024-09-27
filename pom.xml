@@ -53,6 +53,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
 		<!-- http://localhost:8080/h2-console -->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -74,6 +75,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- http://localhost:8080/swagger-ui/index.html -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
