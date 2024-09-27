@@ -11,7 +11,7 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idMedico;
     private Long idEspecialidade;
     @Size(min = 3,max = 80)
     private String nome;
