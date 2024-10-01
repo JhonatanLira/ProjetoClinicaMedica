@@ -12,6 +12,7 @@ public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMedico;
+   // @JoinColumn()
     private Long idEspecialidade;
     @Size(min = 3,max = 80)
     private String nome;
