@@ -14,7 +14,7 @@ public interface MedicoService {
 
     public void salvar(Medico medico);
 
-    public void atualizar(Long id, Medico medicoAtualizado);
+    public void atualizar(Long idMedico, Medico medicoAtualizado);
 
     public void deletar(Long idMedico);
 
