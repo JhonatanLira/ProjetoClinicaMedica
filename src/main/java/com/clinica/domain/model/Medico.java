@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_medico")
 @Data
@@ -12,11 +14,11 @@ public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMedico;
-   // @JoinColumn()
-    private Long idEspecialidade;
-    @Size(min = 3,max = 80)
+    @OneToMany
+    private List<Especialidade> especialidades;
+    @Size(min = 3, max = 80)
     private String nome;
-    @Size(min = 3,max = 11)
+    @Size(min = 3, max = 11)
     private String crm;
 
 }

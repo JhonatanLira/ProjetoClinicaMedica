@@ -13,7 +13,9 @@ public class Agendamento {
     private Long id;
     private String data;
     private String hora;
+    //@OneToOne
     private Long idPaciente;
+    //@OneToOne
     private Long idMedico;
 
 }

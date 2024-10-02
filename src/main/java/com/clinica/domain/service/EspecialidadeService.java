@@ -16,6 +16,6 @@ public interface EspecialidadeService {
 
     public void atualizar(Long idEspecialidade,Especialidade especialidadeAualizada);
 
-    public void deletar(Long idEspecialidade);
+    public void excluir(Long idEspecialidade);
 
 }

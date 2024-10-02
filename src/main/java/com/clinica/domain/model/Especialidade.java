@@ -11,7 +11,7 @@ public class Especialidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEspecialidade;
     private String nome;
     @Size(max = 255)
     private String descricao;

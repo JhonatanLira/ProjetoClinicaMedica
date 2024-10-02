@@ -4,17 +4,16 @@ import com.clinica.domain.model.Especialidade;
 import com.clinica.domain.repository.EspecialidadeRepository;
 import com.clinica.domain.service.EspecialidadeService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EspecialidadeImpl implements EspecialidadeService {
+public class EspecialidadeServiceImpl implements EspecialidadeService {
 
     private EspecialidadeRepository especialidadeRepository;
 
-    public EspecialidadeImpl(EspecialidadeRepository especialidadeRepository) {
+    public EspecialidadeServiceImpl(EspecialidadeRepository especialidadeRepository) {
         this.especialidadeRepository = especialidadeRepository;
     }
 
@@ -35,16 +34,13 @@ public class EspecialidadeImpl implements EspecialidadeService {
 
     @Override
     public void atualizar(Long idEspecialidade, Especialidade especialidadeAualizada) {
-
-        if (especialidadeRepository.findById(idEspecialidade).isPresent()) {
             Especialidade especialidade = especialidadeRepository.findById(idEspecialidade).get();
             BeanUtils.copyProperties(especialidadeAualizada, especialidade, "idEspecialidade");
             salvar(especialidade);
-        }
     }
 
     @Override
-    public void deletar(Long idEspecialidade) {
+    public void excluir(Long idEspecialidade) {
         if(especialidadeRepository.findById(idEspecialidade).isPresent()){
             especialidadeRepository.deleteById(idEspecialidade);
         }
