@@ -1,20 +1,19 @@
 package com.clinica.domain.service;
 
-import com.clinica.domain.model.Especialidade;
-import org.springframework.stereotype.Service;
+import com.clinica.domain.model.Specialty;
 
 import java.util.List;
 
 
 public interface EspecialidadeService {
 
-    public List<Especialidade> listar();
+    public List<Specialty> listar();
 
-    public Especialidade buscarPorId(Long idEspecialidade);
+    public Specialty buscarPorId(Long idEspecialidade);
 
-    public void salvar(Especialidade especialidade);
+    public void salvar(Specialty specialty);
 
-    public void atualizar(Long idEspecialidade,Especialidade especialidadeAualizada);
+    public void atualizar(Long idEspecialidade, Specialty specialtyAualizada);
 
     public void excluir(Long idEspecialidade);
 

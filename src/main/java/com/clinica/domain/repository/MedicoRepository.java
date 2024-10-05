@@ -1,8 +1,10 @@
 package com.clinica.domain.repository;
 
-import com.clinica.domain.model.Medico;
+import com.clinica.domain.model.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MedicoRepository extends JpaRepository<Medico, Long> {
+@Repository
+public interface MedicoRepository extends JpaRepository<Doctor, Long> {
 
 }

@@ -1,18 +1,16 @@
 package com.clinica.api.controller;
 
-import com.clinica.domain.model.Paciente;
-import com.clinica.domain.repository.PacienteRepository;
+import com.clinica.domain.model.Patient;
+import com.clinica.domain.repository.PatientRepository;
 import com.clinica.domain.service.PacienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Tag(name = "PACIENTE", description = "CRUD Paciente")
 @RestController
@@ -20,37 +18,36 @@ import java.util.Optional;
 public class PacienteController {
 
     @Autowired
-    private  PacienteRepository pacienteRepository;
+    private PatientRepository patientRepository;
     @Autowired
     private PacienteService pacienteService;
 
-
     @GetMapping("/")
-    public List<Paciente> listar(){
+    public List<Patient> listar() {
         return pacienteService.listar();
     }
 
-    @GetMapping("/{idPaciente}")
-    public ResponseEntity<Paciente> buscaPorId(@PathVariable Long idPaciente) {
-        if (pacienteRepository.findById(idPaciente).isPresent()) {
-            return ResponseEntity.ok(pacienteService.buscarPaciente(idPaciente));
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    }
-
     @PostMapping
-    public ResponseEntity<Paciente> salvar(@RequestBody @Valid Paciente paciente){
-        if(paciente != null){
+    public ResponseEntity<Patient> salvar(@RequestBody @Valid Patient paciente) {
+        if (paciente != null) {
             pacienteService.salvar(paciente);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PutMapping("/{idPaciente}")
-    public ResponseEntity<Paciente> atualizar(@PathVariable Long idPaciente, @RequestBody Paciente pacienteAtualizado){
+    @GetMapping("/{idPaciente}")
+    public ResponseEntity<Patient> buscaPorId(@PathVariable Long idPaciente) {
+        if (patientRepository.findById(idPaciente).isPresent()) {
+            return ResponseEntity.ok(pacienteService.buscarPaciente(idPaciente));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 
-        if(pacienteRepository.findById(idPaciente).isPresent()){
+    @PutMapping("/{idPaciente}")
+    public ResponseEntity<Patient> atualizar(@PathVariable Long idPaciente, @RequestBody Patient pacienteAtualizado) {
+
+        if (patientRepository.findById(idPaciente).isPresent()) {
             pacienteService.atualizar(idPaciente, pacienteAtualizado);
             return ResponseEntity.status(HttpStatus.OK).build();
         }
@@ -58,8 +55,8 @@ public class PacienteController {
     }
 
     @DeleteMapping("/{idPaciente}")
-    public ResponseEntity<Paciente> deletar(@PathVariable Long idPaciente) {
-        if (pacienteRepository.findById(idPaciente).isPresent()) {
+    public ResponseEntity<Patient> deletar(@PathVariable Long idPaciente) {
+        if (patientRepository.findById(idPaciente).isPresent()) {
             pacienteService.deletar(idPaciente);
             return ResponseEntity.ok().build();
         }

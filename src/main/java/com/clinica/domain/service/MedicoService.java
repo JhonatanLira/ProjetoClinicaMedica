@@ -1,6 +1,6 @@
 package com.clinica.domain.service;
 
-import com.clinica.domain.model.Medico;
+import com.clinica.domain.model.Doctor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,13 +8,13 @@ import java.util.List;
 @Service
 public interface MedicoService {
 
-    public List<Medico> listar();
+    public List<Doctor> listar();
 
-    public Medico buscarMedico(Long idMedico);
+    public Doctor buscarMedico(Long idMedico);
 
-    public void salvar(Medico medico);
+    public void salvar(Doctor doctor);
 
-    public void atualizar(Long idMedico, Medico medicoAtualizado);
+    public void atualizar(Long idMedico, Doctor doctorAtualizado);
 
     public void deletar(Long idMedico);
 

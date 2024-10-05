@@ -4,20 +4,22 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_medico")
+@Table(name = "tb_doctor")
 @Data
-public class Medico {
+public class Doctor implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMedico;
+    private Long idDoctor;
     @OneToMany
-    private List<Especialidade> especialidades;
+    private List<Specialty> specialties;
     @Size(min = 3, max = 80)
-    private String nome;
+    private String name;
     @Size(min = 3, max = 11)
     private String crm;
 

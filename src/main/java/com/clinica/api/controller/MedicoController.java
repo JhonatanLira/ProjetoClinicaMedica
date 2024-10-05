@@ -1,6 +1,6 @@
 package com.clinica.api.controller;
 
-import com.clinica.domain.model.Medico;
+import com.clinica.domain.model.Doctor;
 import com.clinica.domain.repository.MedicoRepository;
 import com.clinica.domain.service.MedicoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,12 +24,12 @@ public class MedicoController {
     private MedicoRepository medicoRepository;
 
     @GetMapping
-    public List<Medico> listar() {
+    public List<Doctor> listar() {
         return medicoService.listar();
     }
 
     @GetMapping("/{idMedico}")
-    public ResponseEntity<Medico> buscaPorId(@PathVariable Long idMedico) {
+    public ResponseEntity<Doctor> buscaPorId(@PathVariable Long idMedico) {
         if (medicoRepository.findById(idMedico).isPresent()) {
             return ResponseEntity.ok(medicoService.buscarMedico(idMedico));
         }
@@ -37,22 +37,22 @@ public class MedicoController {
     }
 
     @PostMapping
-    public ResponseEntity<Medico> salvar(@RequestBody @Valid Medico medico) {
-        medicoService.salvar(medico);
+    public ResponseEntity<Doctor> salvar(@RequestBody @Valid Doctor doctor) {
+        medicoService.salvar(doctor);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{idMedico}")
-    public ResponseEntity<Medico> atualizar(@RequestBody Medico medicoAtualizado, @PathVariable Long idMedico) {
+    public ResponseEntity<Doctor> atualizar(@RequestBody Doctor doctorAtualizado, @PathVariable Long idMedico) {
         if (medicoRepository.findById(idMedico).isPresent()) {
-            medicoService.atualizar(idMedico, medicoAtualizado);
+            medicoService.atualizar(idMedico, doctorAtualizado);
             return ResponseEntity.status(HttpStatus.OK).build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @DeleteMapping("/{idMedico}")
-    public ResponseEntity<Medico> excluir(@PathVariable Long idMedico) {
+    public ResponseEntity<Doctor> excluir(@PathVariable Long idMedico) {
         if (medicoRepository.findById(idMedico).isPresent()) {
             medicoService.deletar(idMedico);
             return ResponseEntity.status(HttpStatus.OK).build();
