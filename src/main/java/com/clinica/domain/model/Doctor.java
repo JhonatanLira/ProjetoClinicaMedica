@@ -16,11 +16,12 @@ public class Doctor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDoctor;
-    @OneToMany
-    private List<Specialty> specialties;
     @Size(min = 3, max = 80)
     private String name;
-    @Size(min = 3, max = 11)
+    @Size(min = 3, max = 20)
     private String crm;
+    private String uf;
+    @OneToMany
+    private List<Specialty> specialties;
 
 }

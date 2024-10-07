@@ -15,11 +15,11 @@ public class Scheduling {
     private Long idScheduling;
     private String dateScheduling;
     private String horaScheduling;
+    private LocalDate registrationDate;
    //@OneToOne
     private Patient patient;
    //@OneToOne
     private Doctor doctor;
-    private LocalDate registrationDate;
 
 
 }
