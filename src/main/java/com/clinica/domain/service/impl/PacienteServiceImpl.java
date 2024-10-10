@@ -1,6 +1,6 @@
 package com.clinica.domain.service.impl;
 
-import com.clinica.domain.model.Patient;
+import com.clinica.domain.model.Paciente;
 import com.clinica.domain.repository.PatientRepository;
 import com.clinica.domain.service.PacienteService;
 import org.springframework.beans.BeanUtils;
@@ -17,25 +17,25 @@ public class PacienteServiceImpl implements PacienteService {
     private PatientRepository patientRepository;
 
     @Override
-    public List<Patient> listar() {
+    public List<Paciente> listar() {
         return patientRepository.findAll();
     }
 
     @Override
-    public Patient buscarPaciente(Long id) {
-        Optional<Patient> PacienteOptional = patientRepository.findById(id);
+    public Paciente buscarPaciente(Long id) {
+        Optional<Paciente> PacienteOptional = patientRepository.findById(id);
         return PacienteOptional.get();
     }
 
     @Override
-    public void salvar(Patient paciente) {
+    public void salvar(Paciente paciente) {
       // paciente.setDataCadastro(LocalDate.now());
         patientRepository.save(paciente);
     }
 
     @Override
-    public void atualizar(Long id, Patient pacienteAtualizado) {
-        Patient paciente = patientRepository.findById(id).get();
+    public void atualizar(Long id, Paciente pacienteAtualizado) {
+        Paciente paciente = patientRepository.findById(id).get();
         BeanUtils.copyProperties(pacienteAtualizado, paciente,"idPaciente");
         salvar(paciente);
     }

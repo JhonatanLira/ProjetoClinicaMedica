@@ -1,20 +1,19 @@
 package com.clinica.domain.service;
 
-import com.clinica.domain.model.Scheduling;
+import com.clinica.domain.model.Agendamento;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface AgendamentoService {
 
-    public List<Scheduling> Listar();
+    public List<Agendamento> listar();
 
-    public Scheduling buscaPorId(Long idAgendamento);
+    public Agendamento buscaPorId(Long idAgendamento);
 
-    public void salvar(Scheduling agendamento);
+    public void salvar(Agendamento agendamento);
 
-    public void Atualizar(Long idAgendamento, Scheduling agendamentoAtualizado);
+    public void atualizar(Long idAgendamento, Agendamento agendamentoAtualizado);
 
     public void excluir(Long idAgendamento);
 }

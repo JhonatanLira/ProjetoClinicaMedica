@@ -7,17 +7,17 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "tb_patient")
+@Table(name = "tb_paciente")
 @Data
-public class Patient implements Serializable {
+public class Paciente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPatient;
-    private String name;
+    private Long idPaciente;
+    private String nome;
     @Size(min = 11, max = 14)
-    private String document;
+    private String documento;
     @Size(min = 9, max = 14)
-    private String cellphone;
+    private String celular;
 
 }

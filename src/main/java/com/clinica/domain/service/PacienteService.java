@@ -1,18 +1,18 @@
 package com.clinica.domain.service;
 
-import com.clinica.domain.model.Patient;
+import com.clinica.domain.model.Paciente;
 
 import java.util.List;
 
 public interface PacienteService {
 
-    public List<Patient> listar();
+    public List<Paciente> listar();
 
-    public Patient buscarPaciente(Long id);
+    public Paciente buscarPaciente(Long id);
 
-    public void salvar(Patient paciente);
+    public void salvar(Paciente paciente);
 
-    public void atualizar(Long id, Patient paciente);
+    public void atualizar(Long id, Paciente paciente);
 
     public void deletar(Long id);
 

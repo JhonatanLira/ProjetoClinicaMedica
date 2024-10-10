@@ -1,35 +1,36 @@
 package com.clinica.domain.service.impl;
 
-import com.clinica.domain.model.Scheduling;
+import com.clinica.domain.model.Agendamento;
 import com.clinica.domain.repository.AgendamentoRepository;
 import com.clinica.domain.service.AgendamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AgendamentoServiceImpl implements AgendamentoService {
 
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-
     @Override
-    public List<Scheduling> Listar() {
+    public List<Agendamento> listar() {
         return agendamentoRepository.findAll();
     }
 
     @Override
-    public Scheduling buscaPorId(Long idAgendamento) {
+    public Agendamento buscaPorId(Long idAgendamento) {
         return agendamentoRepository.findById(idAgendamento).get();
     }
 
     @Override
-    public void salvar(Scheduling agendamento) {
+    public void salvar(Agendamento agendamento) {
         agendamentoRepository.save(agendamento);
     }
 
     @Override
-    public void Atualizar(Long idAgendamento, Scheduling agendamentoAtualizado) {
+    public void atualizar(Long idAgendamento, Agendamento agendamentoAtualizado) {
         if (agendamentoRepository.findById(idAgendamento).isPresent()) {
 
         }

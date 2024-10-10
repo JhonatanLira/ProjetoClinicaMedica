@@ -1,19 +1,18 @@
 package com.clinica.domain.service;
 
-import com.clinica.domain.model.Specialty;
-
+import com.clinica.domain.model.Especialidade;
 import java.util.List;
 
 
 public interface EspecialidadeService {
 
-    public List<Specialty> listar();
+    public List<Especialidade> listar();
 
-    public Specialty buscarPorId(Long idEspecialidade);
+    public Especialidade buscarPorId(Long idEspecialidade);
 
-    public void salvar(Specialty specialty);
+    public void salvar(Especialidade specialty);
 
-    public void atualizar(Long idEspecialidade, Specialty specialtyAualizada);
+    public void atualizar(Long idEspecialidade, Especialidade specialtyAualizada);
 
     public void excluir(Long idEspecialidade);
 

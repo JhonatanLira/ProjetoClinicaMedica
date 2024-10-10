@@ -1,6 +1,6 @@
 package com.clinica.domain.service.impl;
 
-import com.clinica.domain.model.Specialty;
+import com.clinica.domain.model.Especialidade;
 import com.clinica.domain.repository.EspecialidadeRepository;
 import com.clinica.domain.service.EspecialidadeService;
 import org.springframework.beans.BeanUtils;
@@ -18,23 +18,23 @@ public class EspecialidadeServiceImpl implements EspecialidadeService {
     }
 
     @Override
-    public List<Specialty> listar() {
+    public List<Especialidade> listar() {
         return especialidadeRepository.findAll();
     }
 
     @Override
-    public Specialty buscarPorId(Long idEspecialidade) {
+    public Especialidade buscarPorId(Long idEspecialidade) {
         return especialidadeRepository.findById(idEspecialidade).get();
     }
 
     @Override
-    public void salvar(Specialty specialty) {
+    public void salvar(Especialidade specialty) {
         especialidadeRepository.save(specialty);
     }
 
     @Override
-    public void atualizar(Long idEspecialidade, Specialty specialtyAualizada) {
-            Specialty specialty = especialidadeRepository.findById(idEspecialidade).get();
+    public void atualizar(Long idEspecialidade, Especialidade specialtyAualizada) {
+        Especialidade specialty = especialidadeRepository.findById(idEspecialidade).get();
             BeanUtils.copyProperties(specialtyAualizada, specialty, "idEspecialidade");
             salvar(specialty);
     }

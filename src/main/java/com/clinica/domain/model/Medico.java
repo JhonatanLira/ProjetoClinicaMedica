@@ -8,20 +8,20 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_doctor")
+@Table(name = "tb_medico")
 @Data
-public class Doctor implements Serializable {
+public class Medico implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDoctor;
+    private Long idMedico;
     @Size(min = 3, max = 80)
-    private String name;
+    private String nome;
     @Size(min = 3, max = 20)
     private String crm;
     private String uf;
     @OneToMany
-    private List<Specialty> specialties;
+    private List<Especialidade> especialidades;
 
 }

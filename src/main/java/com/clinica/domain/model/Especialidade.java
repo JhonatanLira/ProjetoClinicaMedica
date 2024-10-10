@@ -7,12 +7,12 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_especialidade")
 @Data
-public class Specialty {
+public class Especialidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEspecialidade;
-    private String name;
+    private String nome;
     @Size(max = 255)
-    private String description;
+    private String descricao;
 }

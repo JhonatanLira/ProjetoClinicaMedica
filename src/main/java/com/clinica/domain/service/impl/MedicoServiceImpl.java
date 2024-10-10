@@ -1,6 +1,6 @@
 package com.clinica.domain.service.impl;
 
-import com.clinica.domain.model.Doctor;
+import com.clinica.domain.model.Medico;
 
 import com.clinica.domain.repository.MedicoRepository;
 import com.clinica.domain.service.MedicoService;
@@ -16,27 +16,26 @@ public class MedicoServiceImpl implements MedicoService {
     @Autowired
     private MedicoRepository medicoRepository;
 
-
     @Override
-    public List<Doctor> listar() {
+    public List<Medico> listar() {
         return medicoRepository.findAll();
     }
 
     @Override
-    public Doctor buscarMedico(Long idMedico) {
+    public Medico buscarMedico(Long idMedico) {
         return medicoRepository.findById(idMedico).get();
     }
 
     @Override
-    public void salvar(Doctor doctor) {
-        medicoRepository.save(doctor);
+    public void salvar(Medico medico) {
+        medicoRepository.save(medico);
     }
 
     @Override
-    public void atualizar(Long idMedico, Doctor doctorAtualizado) {
-        Doctor doctor = medicoRepository.findById(idMedico).get();
-        BeanUtils.copyProperties(doctorAtualizado, doctor,"idMedico");
-        salvar(doctor);
+    public void atualizar(Long idMedico, Medico medicoAtualizado) {
+        Medico medico = medicoRepository.findById(idMedico).get();
+        BeanUtils.copyProperties(medicoAtualizado, medico,"idMedico");
+        salvar(medico);
     }
 
     @Override

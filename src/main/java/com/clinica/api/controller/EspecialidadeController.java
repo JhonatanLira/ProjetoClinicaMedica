@@ -1,6 +1,6 @@
 package com.clinica.api.controller;
 
-import com.clinica.domain.model.Specialty;
+import com.clinica.domain.model.Especialidade;
 import com.clinica.domain.repository.EspecialidadeRepository;
 import com.clinica.domain.service.EspecialidadeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,12 +24,12 @@ public class EspecialidadeController {
 
 
     @GetMapping("/")
-    public List<Specialty> list() {
+    public List<Especialidade> list() {
         return especialidadeService.listar();
     }
 
     @GetMapping("/{idEspecialidade}")
-    public ResponseEntity<Specialty> buscaPorId(@PathVariable Long idEspecialidade) {
+    public ResponseEntity<Especialidade> buscaPorId(@PathVariable Long idEspecialidade) {
         if (especialidadeRepository.findById(idEspecialidade).isPresent()) {
             return ResponseEntity.ok(especialidadeService.buscarPorId(idEspecialidade));
         }
@@ -37,7 +37,7 @@ public class EspecialidadeController {
     }
 
     @PostMapping()
-    public ResponseEntity<Specialty> save(@RequestBody @Valid Specialty specialty) {
+    public ResponseEntity<Especialidade> save(@RequestBody @Valid Especialidade specialty) {
         if (specialty != null) {
             especialidadeService.salvar(specialty);
             return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -46,17 +46,17 @@ public class EspecialidadeController {
     }
 
     @PutMapping("/{idEspecialidade}")
-    public ResponseEntity<Specialty> update(@PathVariable Long idEspecialidade, @RequestBody @Valid Specialty specialtyAtualizada) {
+    public ResponseEntity<Especialidade> update(@PathVariable Long idEspecialidade, @RequestBody @Valid Especialidade especialidadeAtualizada) {
 
         if (especialidadeRepository.findById(idEspecialidade).isPresent()) {
-            especialidadeService.atualizar(idEspecialidade, specialtyAtualizada);
+            especialidadeService.atualizar(idEspecialidade, especialidadeAtualizada);
             return ResponseEntity.status(HttpStatus.OK).build();
         }
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{idEspecialidade}")
-    public ResponseEntity<Specialty> delete(@PathVariable Long idEspecialidade) {
+    public ResponseEntity<Especialidade> delete(@PathVariable Long idEspecialidade) {
         if (especialidadeRepository.findById(idEspecialidade).isPresent()) {
             especialidadeService.excluir(idEspecialidade);
             return ResponseEntity.ok().build();

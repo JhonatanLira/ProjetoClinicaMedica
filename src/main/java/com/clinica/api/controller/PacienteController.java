@@ -1,6 +1,6 @@
 package com.clinica.api.controller;
 
-import com.clinica.domain.model.Patient;
+import com.clinica.domain.model.Paciente;
 import com.clinica.domain.repository.PatientRepository;
 import com.clinica.domain.service.PacienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,12 +23,12 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @GetMapping("/")
-    public List<Patient> listar() {
+    public List<Paciente> listar() {
         return pacienteService.listar();
     }
 
     @PostMapping
-    public ResponseEntity<Patient> salvar(@RequestBody @Valid Patient paciente) {
+    public ResponseEntity<Paciente> salvar(@RequestBody @Valid Paciente paciente) {
         if (paciente != null) {
             pacienteService.salvar(paciente);
             return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -37,7 +37,7 @@ public class PacienteController {
     }
 
     @GetMapping("/{idPaciente}")
-    public ResponseEntity<Patient> buscaPorId(@PathVariable Long idPaciente) {
+    public ResponseEntity<Paciente> buscaPorId(@PathVariable Long idPaciente) {
         if (patientRepository.findById(idPaciente).isPresent()) {
             return ResponseEntity.ok(pacienteService.buscarPaciente(idPaciente));
         }
@@ -45,7 +45,7 @@ public class PacienteController {
     }
 
     @PutMapping("/{idPaciente}")
-    public ResponseEntity<Patient> atualizar(@PathVariable Long idPaciente, @RequestBody Patient pacienteAtualizado) {
+    public ResponseEntity<Paciente> atualizar(@PathVariable Long idPaciente, @RequestBody Paciente pacienteAtualizado) {
 
         if (patientRepository.findById(idPaciente).isPresent()) {
             pacienteService.atualizar(idPaciente, pacienteAtualizado);
@@ -55,7 +55,7 @@ public class PacienteController {
     }
 
     @DeleteMapping("/{idPaciente}")
-    public ResponseEntity<Patient> deletar(@PathVariable Long idPaciente) {
+    public ResponseEntity<Paciente> deletar(@PathVariable Long idPaciente) {
         if (patientRepository.findById(idPaciente).isPresent()) {
             pacienteService.deletar(idPaciente);
             return ResponseEntity.ok().build();
