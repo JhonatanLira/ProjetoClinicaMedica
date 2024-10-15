@@ -1,7 +1,7 @@
 package com.clinica.domain.service.impl;
 
 import com.clinica.domain.model.Paciente;
-import com.clinica.domain.repository.PatientRepository;
+import com.clinica.domain.repository.PacienteRepository;
 import com.clinica.domain.service.PacienteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,34 +14,40 @@ import java.util.Optional;
 public class PacienteServiceImpl implements PacienteService {
 
     @Autowired
-    private PatientRepository patientRepository;
+    private PacienteRepository pacienteRepository;
 
     @Override
     public List<Paciente> listar() {
-        return patientRepository.findAll();
+        return pacienteRepository.findAll();
     }
 
     @Override
     public Paciente buscarPaciente(Long id) {
-        Optional<Paciente> PacienteOptional = patientRepository.findById(id);
+        Optional<Paciente> PacienteOptional = pacienteRepository.findById(id);
         return PacienteOptional.get();
     }
 
     @Override
+    public Paciente buscaPacientePorNome(String nome) {
+        System.out.println("Service");
+        return pacienteRepository.findByNomeContaining(nome);
+    }
+
+    @Override
     public void salvar(Paciente paciente) {
-      // paciente.setDataCadastro(LocalDate.now());
-        patientRepository.save(paciente);
+
+        pacienteRepository.save(paciente);
     }
 
     @Override
     public void atualizar(Long id, Paciente pacienteAtualizado) {
-        Paciente paciente = patientRepository.findById(id).get();
-        BeanUtils.copyProperties(pacienteAtualizado, paciente,"idPaciente");
+        Paciente paciente = pacienteRepository.findById(id).get();
+        BeanUtils.copyProperties(pacienteAtualizado, paciente, "idPaciente");
         salvar(paciente);
     }
 
     @Override
     public void deletar(Long id) {
-        patientRepository.deleteById(id);
+        pacienteRepository.deleteById(id);
     }
 }

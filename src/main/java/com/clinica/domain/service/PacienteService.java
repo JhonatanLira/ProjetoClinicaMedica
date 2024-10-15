@@ -10,6 +10,9 @@ public interface PacienteService {
 
     public Paciente buscarPaciente(Long id);
 
+   // public List<Paciente> buscaPacientePorNome(String nome);
+   public Paciente buscaPacientePorNome(String nome);
+
     public void salvar(Paciente paciente);
 
     public void atualizar(Long id, Paciente paciente);
