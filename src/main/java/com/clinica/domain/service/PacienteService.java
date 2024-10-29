@@ -8,15 +8,14 @@ public interface PacienteService {
 
     public List<Paciente> listar();
 
-    public Paciente buscarPaciente(Long id);
+    public Paciente buscarPaciente(Long idPaciente);
 
-   // public List<Paciente> buscaPacientePorNome(String nome);
-   public Paciente buscaPacientePorNome(String nome);
+    public List<Paciente> buscarPorNome(String nome);
 
-    public void salvar(Paciente paciente);
+    public Paciente salvar(Paciente paciente);
 
-    public void atualizar(Long id, Paciente paciente);
+    public Paciente atualizar(Long idPaciente, Paciente pacienteAtualizado);
 
-    public void deletar(Long id);
+    public void deletar(Long idPaciente);
 
 }

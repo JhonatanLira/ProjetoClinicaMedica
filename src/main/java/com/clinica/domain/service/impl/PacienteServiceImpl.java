@@ -3,12 +3,12 @@ package com.clinica.domain.service.impl;
 import com.clinica.domain.model.Paciente;
 import com.clinica.domain.repository.PacienteRepository;
 import com.clinica.domain.service.PacienteService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PacienteServiceImpl implements PacienteService {
@@ -16,38 +16,38 @@ public class PacienteServiceImpl implements PacienteService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
+
     @Override
     public List<Paciente> listar() {
         return pacienteRepository.findAll();
     }
 
     @Override
-    public Paciente buscarPaciente(Long id) {
-        Optional<Paciente> PacienteOptional = pacienteRepository.findById(id);
-        return PacienteOptional.get();
+    public Paciente buscarPaciente(Long idPaciente) {
+        return null;
     }
 
     @Override
-    public Paciente buscaPacientePorNome(String nome) {
-        System.out.println("Service");
-        return pacienteRepository.findByNomeContaining(nome);
+    public List<Paciente> buscarPorNome(String nome) {
+        return null;
+    }
+    @Transactional
+    @Override
+    public Paciente salvar(Paciente paciente) {
+        paciente.getDocumento().replace(".","").replace("-","");
+        return pacienteRepository.save(paciente);
     }
 
     @Override
-    public void salvar(Paciente paciente) {
+    public Paciente atualizar(Long idPaciente, Paciente pacienteAtualizado) {
 
-        pacienteRepository.save(paciente);
+        pacienteAtualizado.setIdPaciente(idPaciente);
+
+        return salvar(pacienteAtualizado);
     }
 
     @Override
-    public void atualizar(Long id, Paciente pacienteAtualizado) {
-        Paciente paciente = pacienteRepository.findById(id).get();
-        BeanUtils.copyProperties(pacienteAtualizado, paciente, "idPaciente");
-        salvar(paciente);
-    }
+    public void deletar(Long idPaciente) {
 
-    @Override
-    public void deletar(Long id) {
-        pacienteRepository.deleteById(id);
     }
 }
