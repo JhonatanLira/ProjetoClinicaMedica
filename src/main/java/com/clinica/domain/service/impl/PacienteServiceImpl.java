@@ -23,8 +23,8 @@ public class PacienteServiceImpl implements PacienteService {
     }
 
     @Override
-    public Paciente buscarPaciente(Long idPaciente) {
-        return null;
+    public Paciente buscarPacientePorId(Long idPaciente) {
+        return pacienteRepository.findById(idPaciente).get();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class PacienteServiceImpl implements PacienteService {
     @Transactional
     @Override
     public Paciente salvar(Paciente paciente) {
-        paciente.getDocumento().replace(".","").replace("-","");
+        paciente.setDocumento(paciente.getDocumento().replace(".","").replace("-",""));
         return pacienteRepository.save(paciente);
     }
 
@@ -48,6 +48,6 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public void deletar(Long idPaciente) {
-
+       pacienteRepository.deleteById(idPaciente);
     }
 }

@@ -8,7 +8,7 @@ public interface PacienteService {
 
     public List<Paciente> listar();
 
-    public Paciente buscarPaciente(Long idPaciente);
+    public Paciente buscarPacientePorId(Long idPaciente);
 
     public List<Paciente> buscarPorNome(String nome);
 

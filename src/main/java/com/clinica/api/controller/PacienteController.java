@@ -31,23 +31,36 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> salvar(@RequestBody @Valid PacienteDto pacienteDto){
-       var paciente = new Paciente();
-       BeanUtils.copyProperties(pacienteDto,paciente);
-       return ResponseEntity.status(HttpStatus.CREATED).body(pacienteService.salvar(paciente));
+    public ResponseEntity<Object> salvar(@RequestBody @Valid PacienteDto pacienteDto) {
+        var paciente = new Paciente();
+        BeanUtils.copyProperties(pacienteDto, paciente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(pacienteService.salvar(paciente));
     }
 
-    //@GetMapping("/{idPaciente}")
     @PutMapping("/{idPaciente}")
-    public ResponseEntity<Object> atualizar(@RequestBody PacienteDto pacienteDto, @Valid  @PathVariable Long idPaciente){
+    public ResponseEntity<Object> atualizar(@RequestBody PacienteDto pacienteDto, @Valid @PathVariable Long idPaciente) {
 
-        if(!pacienteRepository.existsById(idPaciente)){
+        if (!pacienteRepository.existsById(idPaciente)) {
             return ResponseEntity.notFound().build();
         }
         var paciente = new Paciente();
-        BeanUtils.copyProperties(pacienteDto,paciente);
+        BeanUtils.copyProperties(pacienteDto, paciente);
         return ResponseEntity.status(HttpStatus.OK).body(pacienteService.atualizar(idPaciente, paciente));
     }
 
+    @GetMapping("/{idPaciente}")
+    public ResponseEntity<Paciente> buscar(@PathVariable Long idPaciente) {
+        if (!pacienteRepository.existsById(idPaciente)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(pacienteService.buscarPacientePorId(idPaciente));
+    }
 
+    @DeleteMapping("/{idPaciente}")
+    public ResponseEntity<Paciente> excluir(@PathVariable Long idPaciente) {
+        if (!pacienteRepository.existsById(idPaciente)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }
